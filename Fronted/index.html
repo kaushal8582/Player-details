@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .form-group input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .form-group input[type="number"]::-webkit-outer-spin-button,
+    .form-group input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .btn-submit:hover {
+      background: #45a049;
+    }
+
+    .btn-search {
+      background: #008CBA;
+      color: white;
+    }
+
+    .btn-search:hover {
+      background: #007BB5;
+    }
+
+    .results {
+      margin-top: 20px;
+    }
+
+    .results h3 {
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .results div {
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 426px) {
+      .btn-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Player Information Form</h2>
+    <form id="playerForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" required>
+      </div>
+      <div class="form-group">
+        <label for="photoUrl">Photo URL</label>
+        <input type="url" id="photoUrl" required>
+      </div>
+      <div class="form-group">
+        <label for="birthplace">Birthplace</label>
+        <input type="text" id="birthplace" required>
+      </div>
+      <div class="form-group">
+        <label for="numberOfMatches">Number of Matches</label>
+        <input type="number" id="numberOfMatches" required>
+      </div>
+      <div class="form-group">
+        <label for="career">Career</label>
+        <input type="text" id="career" required>
+      </div>
+      <div class="form-group">
+        <label for="score">Score</label>
+        <input type="number" id="score" required>
+      </div>
+      <div class="form-group">
+        <label for="fifties">Fifties</label>
+        <input type="number" id="fifties" required>
+      </div>
+      <div class="form-group">
+        <label for="centuries">Centuries</label>
+        <input type="number" id="centuries" required>
+      </div>
+      <div class="form-group">
+        <label for="wickets">Wickets</label>
+        <input type="number" id="wickets" required>
+      </div>
+      <div class="form-group">
+        <label for="average">Average</label>
+        <input type="number" id="average" required>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-submit">Submit</button>
+      </div>
+      <div>
+        <input type="text" id="search">
+        <button type="button" class="btn btn-search" >Search</button>
+      </div>
+    </form>
+
+    <div class="results" id="results">
+      <h3>Search Results</h3>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
