@@ -13,17 +13,33 @@ const searchInput = document.getElementById("search");
 const submitBtn = document.querySelector(".btn-submit")
 const searchBtn = document.querySelector(".btn-search");
 
+let arr =[]
 
+function editData(){
+    name.value = arr.name;
+    age.value = arr.age;
+    photoUrl.value = arr.photourl;
+    birthplace.value = arr.birthplace;
+    numberOfMatches.value = arr.numberofmatches;
+    career.value = arr.career;
+    score.value = arr.score;
+    fifties.value = arr.fifties;
+    centuries.value = arr.centuries;
+    wickets.value = arr.wickets;
+    average.value = arr.average;
+    submitBtn.innerText = "update"
+}
 
 function renderDataInHTML(player){
     const resultsContainer = document.getElementById("results");
     let playerDiv =''
     playerDiv += `
+          <button class="btn btn-primary" onclick="editData()">Edit</button>
           <strong>Name:</strong> ${player.name}<br>
           <strong>Age:</strong> ${player.age}<br>
-          <strong>Photo:</strong> <img src="${player.photoUrl}" alt="Player photo" style="width: 50px; height: 50px; border-radius: 50%;"><br>
+          <strong>Photo:</strong> <img src="${player.photourl}" alt="Player photo" style="width: 50px; height: 50px; border-radius: 50%;"><br>
           <strong>Birthplace:</strong> ${player.birthplace}<br>
-          <strong>Matches:</strong> ${player.numberOfMatches}<br>
+          <strong>Matches:</strong> ${player.numberofmatches}<br>
           <strong>Career:</strong> ${player.career}<br>
           <strong>Score:</strong> ${player.score}<br>
           <strong>Fifties:</strong> ${player.fifties}<br>
@@ -80,6 +96,7 @@ function getDetails() {
     .then((res) => {
         if(res.data!=null){
             renderDataInHTML(res.data)
+            arr = res.data;
         }
         console.log(res.data)
     })
@@ -90,6 +107,7 @@ function getDetails() {
 
 function updateData(){
     const player = {
+        id :arr.id,
         name: name.value,
         age: age.value,
         photourl: photoUrl.value,
@@ -122,7 +140,7 @@ function updateData(){
         .catch((err) => {
           console.log(err);
         });
-    
+        submitBtn.innerText = "submit"
       alert("Player updated successfully!");
 }
 
@@ -132,7 +150,7 @@ searchBtn.addEventListener("click",(e)=>{
 
 submitBtn.addEventListener("click",(e)=>{
     if(e.target.innerText=="update"){
-
+      updateData()
     }else{
         addData()
     }
